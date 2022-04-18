@@ -1,0 +1,6 @@
+## Default Values for my Helm Chart
+#
+#container:
+#  image: pong:1.0.0
+#
+#replicaCount: 2

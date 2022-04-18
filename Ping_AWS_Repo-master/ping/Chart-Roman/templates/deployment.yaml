@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ping
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ping
+    spec:
+      containers:
+        -  name: ping
+           image: roman1844/tping:1.0.0
+           imagePullPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-service
+spec:
+  type: NodePort
+  selector:
+    app: ping
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
